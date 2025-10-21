@@ -1,4 +1,4 @@
-README.txt
+
 ==========
 Part 1 
 Dynamic Programming Simulation: Consumption and Asset Policy
