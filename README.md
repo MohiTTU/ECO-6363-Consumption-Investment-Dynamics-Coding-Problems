@@ -1,7 +1,5 @@
 
-==========
-Part 1 
-Dynamic Programming Simulation: Consumption and Asset Policy
+Part 1 : Dynamic Programming Simulation: Consumption and Asset Policy
 ------------------------------------------------------------
 Author: Mohi, Date: October 2025
 Language: MATLAB
