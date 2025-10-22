@@ -30,7 +30,7 @@ else
 end
 
 %% STEP 5: Preallocation and Concave Initialization
-V0 = zeros(r_dim, c_dim);
+V0 = Mohi_zeros(r_dim, c_dim);
 for j = 1:c_dim
     y = exp(Z(j));
     coh = a + y;
@@ -380,5 +380,6 @@ for r_dim = grid_sizes
         toc;
     end
 end
+
 
 %}
