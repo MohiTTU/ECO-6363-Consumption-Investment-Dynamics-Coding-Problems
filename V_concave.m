@@ -129,7 +129,7 @@ rng(123);  % For reproducibility
 eps_sim = normrnd(0, sigma, T, 1);  % Income shocks
 
 % Simulate log-income path using AR(1)
-log_income_path = zeros(T, 1);
+log_income_path = Mohi_zeros(T, 1);
 log_income_path(1) = 0;  % Start from mean of AR(1)
 
 for t = 2:T
@@ -140,10 +140,10 @@ end
 income_path = exp(log_income_path);
 
 % Initialize state trackers
-income_state     = zeros(T, 1); income_state(1) = find(Z == min(abs(Z)));
-asset_state      = zeros(T, 1); asset_state(1)  = round(r_dim / 2);
-asset_path       = zeros(T, 1);
-consumption_path = zeros(T, 1);
+income_state     = Mohi_zeros(T, 1); income_state(1) = find(Z == min(abs(Z)));
+asset_state      = Mohi_zeros(T, 1); asset_state(1)  = round(r_dim / 2);
+asset_path       = Mohi_zeros(T, 1);
+consumption_path = Mohi_zeros(T, 1);
 
 % Simulate asset and consumption paths
 for t = 2:T
@@ -192,7 +192,7 @@ function std_c = simulate_model(r_dim, c_dim, gamma, r, sigma, borrowing_limit)
     end
 
     % Concave Initialization of V0
-    V0 = zeros(r_dim, c_dim);
+    V0 = Mohi_zeros(r_dim, c_dim);
     for j = 1:c_dim
         y = exp(Z(j));
         coh = a + y;
@@ -200,9 +200,9 @@ function std_c = simulate_model(r_dim, c_dim, gamma, r, sigma, borrowing_limit)
     end
 
     % Preallocation
-    V1       = zeros(r_dim, c_dim);
-    a_policy = zeros(r_dim, c_dim);
-    c_policy = zeros(r_dim, c_dim);
+    V1       = Mohi_zeros(r_dim, c_dim);
+    a_policy = Mohi_zeros(r_dim, c_dim);
+    c_policy = Mohi_zeros(r_dim, c_dim);
 
     % Parameters
     beta = 0.96;
@@ -241,9 +241,9 @@ function std_c = simulate_model(r_dim, c_dim, gamma, r, sigma, borrowing_limit)
     % Simulation Parameters
     T         = 1000;
     T_burn    = 500;
-    income_state     = zeros(T, 1); income_state(1) = ceil(c_dim / 2);
-    asset_state      = zeros(T, 1); asset_state(1)  = ceil(r_dim / 2);
-    consumption_path = zeros(T, 1);
+    income_state     = Mohi_zeros(T, 1); income_state(1) = ceil(c_dim / 2);
+    asset_state      = Mohi_zeros(T, 1); asset_state(1)  = ceil(r_dim / 2);
+    consumption_path = Mohi_zeros(T, 1);
 
     rng(123);
     for t = 2:T
@@ -326,7 +326,7 @@ for r_dim = grid_sizes
         a     = linspace(a_min, a_max, r_dim)';
 
         % Concave Initialization of V0
-        V0 = zeros(r_dim, c_dim);
+        V0 = Mohi_zeros(r_dim, c_dim);
         for j = 1:c_dim
             y = exp(Z(j));
             coh = a + y;
@@ -334,7 +334,7 @@ for r_dim = grid_sizes
         end
 
         % Preallocation
-        V1 = zeros(r_dim, c_dim);
+        V1 = Mohi_zeros(r_dim, c_dim);
 
         % Value Function Iteration
         dif  = Inf;
@@ -383,3 +383,4 @@ end
 
 
 %}
+
