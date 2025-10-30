@@ -177,4 +177,3 @@ fprintf('Std Dev of n: %.4f\n', std_n);
 fprintf('Std Dev of u: %.4f\n', std_u);
 fprintf('Std Dev of inv′: %.4f\n', std_inv);
 
-fprintf('Δn across w at k = %.2f: %.4f\n', k_grid(ik), max(policy.n(ik,:)) - min(policy.n(ik,:)));
